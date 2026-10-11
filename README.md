@@ -234,44 +234,11 @@ project-sp/
 ├── ui/                  # Streamlit UI
 ├── tests/               # pytest suite
 ├── docs/                # diagrams (architecture.md), api.md, tradeoffs.md
-├── demo_docs/           # sample documents for the demo (space/, cooking/)
-├── demo.html            # on-screen demo guide
-├── demo_script.pdf      # talkable 5–10 min demo script
+├── demo_docs/           # sample documents (space/, cooking/)
+├── demo.html            # visual flow of how the system works
 ├── Dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
 ├── README.md
 └── SETUP.md             # new-machine setup guide
 ```
-
----
-
-## What to commit to Git
-
-Everything needed to build, run, and understand the project — **but no secrets
-and no generated/local files**. The included `.gitignore` already enforces this.
-
-**Commit these:**
-
-```
-app/                 ui/                  tests/
-docs/                demo_docs/           demo.html
-demo_script.pdf      demo_script.html
-Dockerfile           docker-compose.yml   requirements.txt
-README.md            SETUP.md             .gitignore
-.dockerignore        .env.example
-```
-
-**Do NOT commit (ignored by `.gitignore`):**
-
-| Path | Why not |
-|---|---|
-| `.env` | Contains your real `GROQ_API_KEY` — a secret. Share `.env.example` instead. |
-| `.venv/` | Machine-specific virtual environment; recreated with `pip install`. |
-| `rag.db` / `*.db` | Local runtime database file (not source). |
-| `__pycache__/`, `.pytest_cache/` | Generated caches. |
-| `.DS_Store` | macOS clutter. |
-
-> **Security note:** never commit `.env`. If a key is ever committed by accident,
-> rotate it immediately. `.env.example` shows the needed variables with blank
-> values so others know what to set.
